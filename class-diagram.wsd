@@ -1,0 +1,80 @@
+@startuml class-diagram
+    interface IHitable {
+        void Hit()
+    }
+
+    interface IPickable {
+        void Pick()
+    }
+    
+    interface IControllable {
+        void Move();
+        void Jump();
+    }
+
+    interface IDamageable {
+        void TakeDamage();
+    }
+
+    interface IBonus {
+        void add(); 
+        void discard();
+    }
+
+    interface IDie {
+        void Die();
+    }
+
+    class Player {
+        - int score;
+        - int lives;
+        - List<IBonus> bonuses; 
+    }
+
+    class Coin {
+        - int value;
+    }
+
+    abstract SimpleObstacle {
+        - int scoreLoss;
+    }
+
+    class NonLethalObstacle {
+        - int damage; 
+    }
+
+    class LethalObstacle {
+
+    }
+
+    class SpeedBonus {
+        - float additionalSpeed; 
+    }
+
+    class ShieldBonus {
+        - int shieldCount; 
+    }
+
+    class MagnetBonus {
+        - float magnetismTime;
+    }
+
+    class LethalObstacle {
+
+    }
+
+
+    LethalObstacle --|> SimpleObstacle
+    NonLethalObstacle --|> SimpleObstacle
+    NonLethalObstacle --|> IHitable
+    IBonus --|> IPickable
+    LethalObstacle --|> IHitable
+    SpeedBonus --|> IBonus
+    ShieldBonus --|> IBonus
+    MagnetBonus --|> IBonus
+    Coin --|> IPickable 
+    Player --|> IControllable
+    Player --|> IDamageable
+    IBonus --* Player
+    Player --|> IDie
+@enduml
