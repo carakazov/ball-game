@@ -1,0 +1,31 @@
+@startuml prodiver-class-diagramm
+    package Domain {
+        class Player
+        class SimpleObstacle
+        class SimpleBonus
+        class SimplePickable 
+    }
+
+    interface IEventProvider {
+        UnityEvent DefineCollisionHandler(Collision collision);
+    }
+
+    interface ICollisionProvider<T> {
+        void Handle(Player player, T item);
+    }
+
+    class CollisionProvider {
+        - ICollisionProvider collisionProvider;
+        - Player player;
+    }
+
+    class PickableProvider 
+    class HitableProvider
+    class BonusProvider
+
+    Player --o CollisionProvider
+    CollisionProvider --|> IEventProvider
+    PickableProvider --|> ICollisionProvider<SimplePickable>
+    HitableProvider --|> ICollisionProvider
+    BonusProvider --|> ICollisionProvider
+@enduml

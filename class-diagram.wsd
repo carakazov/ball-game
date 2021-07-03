@@ -41,6 +41,14 @@
         - int scoreLoss;
     }
 
+    abstract SimplePickable {
+        
+    }
+
+    abstract SimpleBonus {
+        - float workTime;
+    }
+
     class NonLethalObstacle {
         - int damage; 
     }
@@ -58,14 +66,17 @@
     }
 
     class MagnetBonus {
-        - float magnetismTime;
+        - float magnetismRange;
     }
 
     class LethalObstacle {
 
     }
 
-
+    Coin --|> SimplePickable
+    SpeedBonus --|> SimpleBonus
+    ShieldBonus --|> SimpleBonus
+    MagnetBonus --|> SimpleBonus
     LethalObstacle --|> SimpleObstacle
     NonLethalObstacle --|> SimpleObstacle
     NonLethalObstacle --|> IHitable
