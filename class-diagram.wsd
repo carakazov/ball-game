@@ -29,6 +29,8 @@
         - int score;
         - int lives;
         - List<IBonus> bonuses; 
+        - boolean isInvicible; 
+        - float invicibleTime;
     }
 
     class Coin {
@@ -76,5 +78,5 @@
     Player --|> IControllable
     Player --|> IDamageable
     IBonus --* Player
-    Player --|> IDie
+    Player --|> IDie 
 @enduml
