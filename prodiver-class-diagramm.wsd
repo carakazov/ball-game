@@ -1,9 +1,6 @@
 @startuml prodiver-class-diagramm
     package Domain {
         class Player
-        class SimpleObstacle
-        class SimpleBonus
-        class SimplePickable 
     }
 
     interface IEventProvider {
@@ -25,7 +22,7 @@
 
     Player --o CollisionProvider
     CollisionProvider --|> IEventProvider
-    PickableProvider --|> ICollisionProvider<SimplePickable>
+    PickableProvider --|> ICollisionProvider
     HitableProvider --|> ICollisionProvider
     BonusProvider --|> ICollisionProvider
 @enduml
